@@ -1,0 +1,29 @@
+h2{
+    text-align: center;
+}
+p{
+    text-align: center;
+    width: 60%;
+    font-size: 13px;
+    margin: auto;
+}
+h3,h6{
+    text-align: center;
+    margin: 10px 0;
+}
+img{
+    margin: auto;
+    display: block;
+    width: 100%;
+}
+.teacher{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 300px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.gbgyv{
+    display: flex;
+}

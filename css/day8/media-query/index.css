@@ -1,0 +1,61 @@
+h2{
+    text-align: center;
+}
+p{
+    text-align: center;
+    width: 60%;
+    font-size: 13px;
+    margin: auto;
+}
+h3,h6{
+    text-align: center;
+    margin: 10px 0;
+}
+img{
+    margin: auto;
+    display: block;
+    width: 100%;
+}
+.teacher{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 300px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.gbgyv{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+@media screen and (max-width: 449px){
+    .teacher{
+        width: 100%;
+    }
+    .grid{
+        
+    }
+}
+@media screen and (min-width:450px) and (max-width: 767px){
+    .teacher{
+        width: 45%;
+    }
+
+    
+}
+@media screen and (min-width: 768px) and (max-width: 1023px){
+    .teacher{
+        width: 30%;
+        border: 3px solid #000;
+    }
+    
+}
+@media  screen and (min-width: 1024px){
+    .teacher{
+        width: 22%;
+    }
+    .gbgyv{
+        display: flex;
+    }
+}

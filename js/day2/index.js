@@ -48,8 +48,15 @@
 // fruits[0] = 'Orange'
 // console.log(fruits[0])
 // 3. Function
-function sayHello(parameter1) {
-    console.log('Hello',parameter1)
-}
-sayHello(1)
-sayHello()
+// function sayHello(parameter1) {
+//     console.log('Hello',parameter1)
+// }
+// sayHello(1)
+// sayHello()
+
+// console.log(""!==0)
+
+var a = 1
+var c = []
+var b = "nayan" + " "+ "kale" + " "+ a  + c
+console.log(b)

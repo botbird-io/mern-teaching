@@ -31,19 +31,26 @@
 // name[3]
 
 
-var str = "coding room"
+var str = "Cat"
 
 // console.log()
 var output = ""
 
 var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 var lower = "abcdefghijklmnopqrstuvwxyz"
-// str = "CODING ROOM"
+// str = ""
 for(var i=0;i<str.length;i++){
+    var flag = true
     for(var j=0;j<upper.length;j++){
         if(str[i] == lower[j]){
+            flag = false
             output += upper[j]
+            break
         }
+        console.log(i,j)
+    }
+    if(flag){
+        output += str[i]
     }
 }
 

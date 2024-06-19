@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <h1 id="heading1" onclick="change()">Dom</h1>
+    <h1 onmouseleave="change()" id="heading2"> hgfghf</h1>
+</body>
+</html>
+
+<script >
+    console.log(document)
+    // console.log(window)
+    document.title = "Hi"
+    // console.log(document.title)
+
+    var h1 = document.querySelector('h1')
+    var heading2 = document.getElementById('heading2')
+    var allHeading = document.querySelectorAll('h1')
+    console.log(allHeading)
+    h1.textContent = 'DOM I'
+    allHeading[1].textContent += 'Nayan'
+    function change(){
+        // heading2.style.color = 'red'
+        // heading2.innerText = 'hvgbhjghghjg'
+        h1.style.backgroundColor = 'purple'
+        allHeading.forEach(function(e){
+            e.style.color='blue'
+        })
+    }
+</script>
+
+ <!-- document.getElementById document.querySelector document.querySelectorAll  -->

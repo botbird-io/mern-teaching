@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <form onsubmit="" id="form">
+        <label>Name</label>
+        <input id="name1" type="text"/>
+        <br/>
+        <label>Email</label>
+        <input id="email" type="email"/>
+        <br/>
+        <label>Select a option</label>
+        <select id="select">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>gfdhgd</option>
+        </select>
+        <br/>
+        <button>Submit</button>
+    </form>
+</body>
+</html>
+
+<script>
+    var form = document.getElementById('form')
+
+    form.addEventListener('submit',submit1)
+
+    var name1 = document.getElementById('name1')
+    var email = document.getElementById('email')
+    var select = document.getElementById('select')
+    // name1.addEventListener('keypress',function(e){
+        // console.log();
+    // })
+    function submit1(event) {
+        event.preventDefault()
+        console.log(name1.value)
+        console.log(email.value)
+        console.log(select.value)
+        
+    }
+</script>

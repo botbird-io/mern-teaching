@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <h1>yfuytut</h1> -->
+</body>
+</html>
+
+
+<script>
+    // localStorage.setItem('name1', 'Nayan');
+    // localStorage.setItem('name', 'Sanket');
+    // localStorage.setItem('age', 25);
+    // localStorage.setItem('married', false);
+    let hobbies = ['coding', 'reading', 'playing'];
+
+    localStorage.setItem('hobbies', JSON.stringify(hobbies) );
+
+    console.log(JSON.parse (localStorage.getItem('hobbies')));
+
+    // localStorage.removeItem('married');
+
+    // localStorage.clear();
+</script>
+
+<!-- setItem getItem removeItem clear -->

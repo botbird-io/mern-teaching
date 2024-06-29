@@ -1,6 +1,6 @@
 var form = document.querySelector('form')
-var task = document.getElementById('task')
-var priority = document.getElementById('priority')
+var input = document.getElementById('task')
+var select = document.getElementById('priority')
 
 
 var tbody = document.querySelector('tbody')
@@ -9,8 +9,8 @@ var tbody = document.querySelector('tbody')
 form.addEventListener('submit',function(e){
     e.preventDefault()
     let obj = {
-        task : task.value,
-        priority : priority.value
+        task : input.value,
+        priority : select.value
     }
     // localStorage.setItem('task',JSON.stringify(obj))
 
@@ -22,24 +22,56 @@ form.addEventListener('submit',function(e){
     arr.push(obj)
 
     localStorage.setItem('task',JSON.stringify(arr))
-    // var td1 = document.createElement('td')
-    // var td2 = document.createElement('td')
-    // var td3 = document.createElement('td')
+    var td1 = document.createElement('td')
+    var td2 = document.createElement('td')
+    var td3 = document.createElement('td')
 
-    // td1.innerText = task.value 
-    // td2.innerText = priority.value
+    td1.innerText = input.value 
+    td2.innerText = select.value
 
-    // if(priority.value == 'High')
-    //     td2.style.backgroundColor = 'red'
-    // else if(priority.value == 'Low')
-    //     td2.style.backgroundColor = 'green'
+    if(select.value == 'High')
+        td2.style.backgroundColor = 'red'
+    else if(select.value == 'Low')
+        td2.style.backgroundColor = 'green'
 
 
-    // var tr = document.createElement('tr')
+    var tr = document.createElement('tr')
 
-    // tr.append(td1,td2,td3)
+    tr.append(td1,td2,td3)
 
-    // tbody.append(tr)
+    tbody.append(tr)
 
 
 })
+
+
+function oldTasks(){
+    let arr = JSON.parse(localStorage.getItem('task'))
+
+    if (arr == null)
+        return
+
+    arr.forEach(function(e,i){
+        console.log(e)
+        var td1 = document.createElement('td')
+        var td2 = document.createElement('td')
+        var td3 = document.createElement('td')
+
+        td1.innerText = e.task
+        td2.innerText = e.priority
+
+        if(e.priority == 'High')
+            td2.style.backgroundColor = 'red'
+        else if(e.priority == 'Low')
+            td2.style.backgroundColor = 'green'
+
+
+        var tr = document.createElement('tr')
+
+        tr.append(td1,td2,td3)
+
+        tbody.append(tr)
+    })
+}
+
+oldTasks()

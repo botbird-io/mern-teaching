@@ -12,53 +12,45 @@ form.addEventListener('submit',function(e){
         task : input.value,
         priority : select.value
     }
-    // localStorage.setItem('task',JSON.stringify(obj))
 
     let arr = JSON.parse(localStorage.getItem('task'))
-
+    
     if(arr == null)
         arr = []
 
     arr.push(obj)
 
     localStorage.setItem('task',JSON.stringify(arr))
-    var td1 = document.createElement('td')
-    var td2 = document.createElement('td')
-    var td3 = document.createElement('td')
 
-    td1.innerText = input.value 
-    td2.innerText = select.value
+    allTasks()
+    
 
-    if(select.value == 'High')
-        td2.style.backgroundColor = 'red'
-    else if(select.value == 'Low')
-        td2.style.backgroundColor = 'green'
-
-
-    var tr = document.createElement('tr')
-
-    tr.append(td1,td2,td3)
-
-    tbody.append(tr)
-
-
+    
+    
 })
 
 
-function oldTasks(){
+function allTasks(){
     let arr = JSON.parse(localStorage.getItem('task'))
-
+    
     if (arr == null)
         return
-
+    
+    tbody.innerHTML = ""
+    
     arr.forEach(function(e,i){
-        console.log(e)
+        // console.log(e)
         var td1 = document.createElement('td')
         var td2 = document.createElement('td')
         var td3 = document.createElement('td')
-
+        
         td1.innerText = e.task
         td2.innerText = e.priority
+        td3.innerHTML = '<img src="./trash.png"/>'
+        
+        td3.addEventListener('click',function () {
+            deleteRow(i)
+        })
 
         if(e.priority == 'High')
             td2.style.backgroundColor = 'red'
@@ -74,4 +66,16 @@ function oldTasks(){
     })
 }
 
-oldTasks()
+allTasks()
+
+function deleteRow(index){
+    console.log('delete',index)
+    let arr = JSON.parse(localStorage.getItem('task'))
+
+    arr.splice(index,1)
+
+    localStorage.setItem('task',JSON.stringify(arr))
+
+    allTasks()
+
+}

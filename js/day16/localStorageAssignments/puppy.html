@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puppy Like and Dislike</title>
+</head>
+<body>
+    <img src="https://th.bing.com/th/id/R.bec9cc8b9cdbe891f18888067f36b5ab?rik=3%2fycEAeK1lr6Og&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2f6%2fd%2f0%2f868430-download-free-cute-puppies-wallpaper-hd-1920x1280-free-download.jpg&ehk=3nmucwagTTcT4gHyQHTc7HuhaqAkQRD5r%2bJa3GvROgw%3d&risl=&pid=ImgRaw&r=0" width="400px"/>
+    <br/>
+    <p>No of likes : <span id="like">0</span></p>
+    <p>No of dislikes : <span id="dislike">0</span></p>
+    <button onclick="increaseLike()">Like</button>
+    <button onclick="increaseDislike()">Dislike</button>
+</body>
+</html>
+
+<script>
+    var like = localStorage.getItem('puppyLike') || 0
+
+    // if(like == null)
+    //      like = 0
+    var dislike = localStorage.getItem('puppyDislike') || 0
+    let likes = document.getElementById('like')
+    let dislikes = document.getElementById('dislike')
+
+    
+    likes.innerText = like
+    dislikes.innerText = dislike
+
+
+    function increaseLike(){
+        like++
+        localStorage.setItem('puppyLike',like)
+        likes.innerText = like
+    }
+
+    function increaseDislike(){
+        dislike++
+        localStorage.setItem('puppyDislike',dislike)
+        dislikes.innerText = dislike
+    }
+</script>

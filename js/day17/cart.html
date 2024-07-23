@@ -19,6 +19,7 @@
         }
         input{
             width: 15px;
+            text-align: center;
         }
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
@@ -72,17 +73,18 @@
 </html>
 
 <script>
-    let products = JSON.parse( localStorage.getItem('cart') ) || []
+    let defaultProducts = JSON.parse( localStorage.getItem('cart') ) || []
     let displayPrice = document.getElementById('price')
     let displayDiscount = document.getElementById('discount')
     let displayTotal = document.getElementById('totalPrice')
     
     let cartDiv = document.getElementById('cart')
-    function displayCart(){
+    function displayCart(products){
+        cartDiv.innerHTML = ''
         let calcPrice = 0
         let calcDiscount = 0
         let Total = 0
-        products.map(function(e){
+        products.map(function(e,i){
             let img = document.createElement('img')            
             let name = document.createElement('h2')            
             let price = document.createElement('p')            
@@ -103,6 +105,16 @@
 
             button1.innerText = '-'
             button2.innerText = '+'
+            
+            
+            button1.addEventListener('click',function () {
+                decrease(i)
+            })
+
+            button2.addEventListener('click',function () {
+                increase(i)
+            })
+
 
             let div = document.createElement('div')            
             let namePriceDiv = document.createElement('div')            
@@ -122,11 +134,33 @@
             calcDiscount += e.qty * e.discount
         })        
 
-        displayPrice.innerText = calcPrice
-        displayDiscount.innerText = calcPrice - calcDiscount
-        displayTotal.innerText = calcDiscount
+        displayPrice.innerText = 'Rs ' + calcPrice
+        displayDiscount.innerText = 'Rs ' + (calcPrice - calcDiscount)
+        displayTotal.innerText = 'Rs ' + calcDiscount
 
     }
-
-    displayCart()
+    function decrease(index){
+        defaultProducts.forEach(function(e,i) {
+            if(index==i){
+                e.qty--
+            }
+            if(e.qty<=0){
+                defaultProducts.splice(i,1)
+            }
+        });
+        // console.log(defaultProducts)
+        displayCart(defaultProducts)
+        localStorage.setItem('cart',JSON.stringify(defaultProducts))
+    }
+    function increase(index){
+        defaultProducts.forEach(function(e,i) {
+            if(index==i){
+                e.qty++
+            }
+        });
+        // console.log(defaultProducts)
+        displayCart(defaultProducts)
+        localStorage.setItem('cart',JSON.stringify(defaultProducts))
+    }
+    displayCart(defaultProducts)
 </script>

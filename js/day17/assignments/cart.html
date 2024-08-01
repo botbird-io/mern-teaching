@@ -43,7 +43,17 @@
         -webkit-appearance: none;
         margin: 0;
     }
-
+    #paymentBtn{
+        width: 100%;
+        border-radius: 5px;
+        display: block;
+        background-color: teal;
+        color: white;
+        padding: 7px 0;
+        text-align: center;
+        margin-top: 10px;
+        text-decoration: none;
+    }
 </style>
 <body>
     <a href="./mens.html">Go to Mens Product</a>
@@ -56,6 +66,8 @@
             <br>
             <input id="coupon" />
             <button id="couponBtn">Apply</button>
+            <br>
+            <a href="./payment.html" id="paymentBtn" onclick="storePrice()">Make Payment</a>
         </div>
     </div>
 </body>
@@ -67,7 +79,11 @@
     let cartDiv = document.getElementById('cart')
     let productSpan = document.getElementById('totalProducts')
     let priceSpan = document.getElementById('totalPrice')
-    let totalPrice = 0
+    let totalPrice = 0, couponApplied = false
+
+    function storePrice(){
+        localStorage.setItem('totalPrice', totalPrice)
+    }
 
     function displayCart(products){
         cartDiv.innerHTML = null
@@ -147,8 +163,9 @@
     let couponBtn = document.getElementById('couponBtn')
 
     couponBtn.addEventListener('click',function(){
-        if(couponInput.value == 'codingroom30'){
+        if(couponInput.value == 'codingroom30' && couponApplied == false){
             totalPrice = totalPrice * 0.7
+            couponApplied = true
             alert('Coupon Applied')
         }else{
             alert('Invalid Coupon')

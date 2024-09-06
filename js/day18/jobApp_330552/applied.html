@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Database</title>
+    <link rel="stylesheet" href="commonStyles.css" />
+    <style>
+      span{
+        color: blue;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="links">
+      <div><a href="index.html">Home</a></div>
+      <div><a href="applied.html">Applied Jobs</a></div>
+      <div><a href="bookmark.html">Bookmarks</a></div>
+    </div>
+
+    <main>
+      <select id="salary">
+        <option value="none">Sort by Salary</option>
+        <option value="ltoh">Low to High</option>
+        <option value="htol">High to Low</option>
+      </select>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Job applied</th>
+            <th>Salary expected</th>
+            <th>Add to bookmark</th>
+          </tr>
+        </thead>
+        <tbody id="body">
+          <!-- Append your output to tbody -->
+        </tbody>
+      </table>
+    </main>
+  </body>
+  <script>
+    //you need to code here
+    var tbody = document.getElementById("body");
+
+
+    var jobs = JSON.parse(localStorage.getItem('jobs')) || [];
+
+    displayJobs(jobs)
+
+    function displayJobs(data){
+      tbody.innerHTML = '';
+
+      data.map(function(e){
+        var tr = document.createElement('tr');
+        var td1 = document.createElement('td');
+        var td2 = document.createElement('td');
+        var td3 = document.createElement('td');
+        var td4 = document.createElement('td');
+        var td5 = document.createElement('td');
+        var span = document.createElement('span');
+
+        td1.textContent = e.name;
+        td2.textContent = e.email;
+        td3.textContent = e.role;
+        td4.textContent = e.salary;
+        span.textContent = 'Add to bookmark';
+
+        span.addEventListener('click', function(){
+          var bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+          bookmarks.push(e);
+          localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+        })
+
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        tr.appendChild(td4);
+        tr.appendChild(td5);
+        td5.appendChild(span);
+
+        tbody.appendChild(tr);
+      })
+
+      var salary = document.getElementById('salary');
+      salary.addEventListener('change', sortSalary);
+      function sortSalary(e){
+        var data = jobs.slice();
+        if(e.target.value === 'ltoh'){
+          data.sort(function(a,b){
+            return a.salary - b.salary;
+          })
+        }else if(e.target.value === 'htol'){
+          data.sort(function(a,b){
+            return b.salary - a.salary;
+          })
+        }
+        displayJobs(data);
+      }
+    }
+  </script>
+</html>

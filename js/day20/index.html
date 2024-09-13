@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- /*
+Product name
+Category
+Image url
+Price
+Gender (select)
+Sold (boolean value) (by default false
+*/ -->
+<body>
+    <form style="display: flex; flex-direction: column; width: 200px;">
+        <label for="name">Product Name:
+            <input type="text" id="name">
+        </label>
+        <label for="category">Category:
+            <input type="text" id="category">
+        </label>
+        <label for="image">Image URL:
+            <input type="text" id="image">
+        </label>
+        <label for="price">Price:
+            <input type="text" id="price">
+        </label>
+        <label >
+            Gender:
+            <select name="gender">
+                <option value="male"> Male</option>
+                <option value="female">Female</option>
+            </select>
+        </label>
+        <button>Submit</button>
+    </form>
+    
+</body>
+</html>
+
+<!-- <script src="index.js"> -->
+
+<script>
+    function Product(name,category,image,price,gender){
+        this.name = name;
+        this.category = category;
+        this.image = image;
+        this.price = price;
+        this.gender = gender;
+        this.sold = false;
+    }
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.querySelector('#name').value;
+        const category = document.querySelector('#category').value;
+        const image = document.querySelector('#image').value;
+        const price = document.querySelector('#price').value;
+        const gender = document.querySelector('select').value;
+        const product = new Product(name,category,image,gender,price);
+        console.log(product);
+        let products = JSON.parse(localStorage.getItem('Products')) || [];
+        products.push(product);
+        localStorage.setItem('Products', JSON.stringify(products));
+    })
+</script>
+
+<!-- connect index.js file -->
+ <script src="index.js"></script>

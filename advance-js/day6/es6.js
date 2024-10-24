@@ -107,3 +107,34 @@
 // obj.display();
 
 // obj.greet();
+
+// spread operator
+
+// let arr = [1,2,3,4,5];
+
+// let arr1 = [6,7,8,9,10];
+
+// let arr2 = [...arr,5.1,...arr1]
+
+// console.log(arr2);
+
+// object assign
+
+// let obj = {
+//     name: "John",
+//     age: 30,
+//     city: "New York",
+// }
+
+// let obj1 = {
+//     email: "123@example.com",
+// }
+
+// let obj3 = {
+//     number : 123456,
+// }
+// let obj2 = Object.assign(obj3,obj,obj1);
+
+// console.log(obj2,obj,obj1,obj3);
+
+
